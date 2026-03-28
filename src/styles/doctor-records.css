@@ -1,0 +1,348 @@
+/* ============================================
+   Doctor Create Medical Record
+   ============================================ */
+
+/* Page Header */
+.rec-page-header {
+  background: linear-gradient(135deg, var(--color-light-teal) 0%, var(--color-teal) 100%);
+  color: white;
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  margin-bottom: 1.5rem;
+}
+
+.rec-page-header h1 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 0.3rem;
+}
+
+.rec-page-header p {
+  font-size: 0.9rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Patient Info Banner */
+.rec-patient-banner {
+  background: var(--color-white);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.rec-patient-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-teal);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.rec-patient-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-near-black);
+}
+
+.rec-patient-sub {
+  font-size: 0.8rem;
+  color: var(--color-muted-gray);
+}
+
+/* Form Card */
+.rec-form-card {
+  background: var(--color-white);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+/* Section */
+.rec-section {
+  margin-bottom: 2rem;
+}
+
+.rec-section-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--color-near-black);
+  padding-bottom: 0.6rem;
+  border-bottom: 2px solid var(--color-divider);
+  margin-bottom: 1.2rem;
+}
+
+/* Form Elements */
+.rec-field {
+  margin-bottom: 1.2rem;
+}
+
+.rec-label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-dark-text);
+  margin-bottom: 0.4rem;
+}
+
+.rec-required {
+  color: var(--color-error);
+}
+
+.rec-input,
+.rec-textarea,
+.rec-select {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.rec-textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.rec-input:focus,
+.rec-textarea:focus,
+.rec-select:focus {
+  border-color: var(--color-teal);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.1);
+}
+
+.rec-help {
+  font-size: 0.8rem;
+  color: var(--color-muted-gray);
+  margin-top: 0.3rem;
+}
+
+/* Form Row */
+.rec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.rec-row-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+/* Tag Input */
+.rec-tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.5rem;
+  min-height: 45px;
+  transition: border-color 0.2s;
+  align-items: center;
+}
+
+.rec-tag-container:focus-within {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.1);
+}
+
+.rec-tag {
+  background: var(--color-sky-active-bg);
+  color: var(--color-sky-active-text);
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.rec-tag-remove {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: var(--color-sky-active-text);
+  line-height: 1;
+  padding: 0;
+}
+
+.rec-tag-input {
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  font-family: inherit;
+  flex: 1;
+  min-width: 120px;
+  padding: 0.2rem;
+}
+
+/* Prescriptions Section */
+.rec-prescriptions {
+  background: var(--color-row-bg);
+  border-radius: 10px;
+  padding: 1.5rem;
+}
+
+.rec-rx-item {
+  background: var(--color-white);
+  border: 1px solid var(--color-divider);
+  border-radius: 8px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.rec-rx-remove {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+  border: none;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.rec-rx-remove:hover {
+  background: #fecaca;
+}
+
+.rec-rx-number {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-muted-gray);
+  margin-bottom: 0.8rem;
+}
+
+.rec-add-rx-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  background: var(--color-teal);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.rec-add-rx-btn:hover {
+  background: var(--color-teal-hover);
+}
+
+.rec-add-rx-btn svg {
+  width: 18px;
+  height: 18px;
+  fill: white;
+}
+
+/* Form Actions */
+.rec-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+  padding-top: 1.5rem;
+  border-top: 2px solid var(--color-divider);
+}
+
+.rec-btn-cancel {
+  padding: 0.7rem 1.5rem;
+  background: var(--color-card-bg);
+  color: var(--color-dark-text);
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s;
+}
+
+.rec-btn-cancel:hover {
+  background: var(--color-divider);
+}
+
+.rec-btn-submit {
+  padding: 0.7rem 1.5rem;
+  background: var(--color-teal);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.rec-btn-submit:hover {
+  background: var(--color-teal-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+}
+
+.rec-btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Error / Success */
+.rec-error {
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.rec-success {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+  padding: 0.7rem 1rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .rec-row,
+  .rec-row-4 {
+    grid-template-columns: 1fr;
+  }
+  .rec-form-card {
+    padding: 1.2rem;
+  }
+}

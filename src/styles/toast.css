@@ -1,0 +1,156 @@
+/* ============================================
+   Toast Popup Notifications
+   Appears top-right, stacks vertically,
+   auto-dismisses with a progress bar.
+   ============================================ */
+
+.toast-container {
+  position: fixed;
+  top: 5rem;               /* below the header */
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 400px;
+  width: 100%;
+  pointer-events: none;    /* let clicks fall through the gap */
+}
+
+/* ── Single toast ── */
+.toast-item {
+  pointer-events: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 1rem 1.1rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+  border-left: 4px solid #64748b;
+  position: relative;
+  overflow: hidden;
+  animation: toastSlideIn 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  outline: none;
+}
+
+/* Type-based accent colours */
+.toast-type-medication  { border-left-color: #059669; }
+.toast-type-appointment { border-left-color: #1e3a8a; }
+.toast-type-lab_result  { border-left-color: #7c3aed; }
+.toast-type-prescription{ border-left-color: #ea580c; }
+.toast-type-system      { border-left-color: #64748b; }
+
+@keyframes toastSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+/* ── Icon ── */
+.toast-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toast-type-medication  .toast-icon { background: #ecfdf5; color: #059669; }
+.toast-type-appointment .toast-icon { background: #eff6ff; color: #1e3a8a; }
+.toast-type-lab_result  .toast-icon { background: #f5f3ff; color: #7c3aed; }
+.toast-type-prescription .toast-icon{ background: #fff7ed; color: #ea580c; }
+.toast-type-system      .toast-icon { background: #f8fafc; color: #64748b; }
+
+/* ── Body ── */
+.toast-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.toast-label {
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.15rem;
+}
+
+.toast-type-medication  .toast-label { color: #059669; }
+.toast-type-appointment .toast-label { color: #1e3a8a; }
+.toast-type-lab_result  .toast-label { color: #7c3aed; }
+.toast-type-prescription .toast-label{ color: #ea580c; }
+.toast-type-system      .toast-label { color: #64748b; }
+
+.toast-title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.3;
+}
+
+.toast-message {
+  margin: 0.2rem 0 0;
+  font-size: 0.8rem;
+  color: #64748b;
+  line-height: 1.35;
+}
+
+/* ── Close button ── */
+.toast-close {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: #94a3b8;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.toast-close:hover {
+  background: #f1f5f9;
+  color: #475569;
+}
+
+/* ── Progress bar ── */
+.toast-progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  background: currentColor;
+  opacity: 0.25;
+  animation: toastCountdown 8s linear forwards;
+  width: 100%;
+  transform-origin: left;
+}
+
+@keyframes toastCountdown {
+  from { transform: scaleX(1); }
+  to   { transform: scaleX(0); }
+}
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .toast-container {
+    top: auto;
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: 100%;
+  }
+
+  .toast-item {
+    border-radius: 10px;
+  }
+}

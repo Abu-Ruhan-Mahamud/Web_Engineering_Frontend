@@ -1,0 +1,453 @@
+/* ──────────────────────────────
+   Medications Page
+   ────────────────────────────── */
+
+/* ---------- Header ---------- */
+.med-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.med-page-title {
+  font-size: var(--font-size-2xl, 1.75rem);
+  font-weight: 700;
+  color: var(--color-deep-blue, #1e3a8a);
+  margin: 0;
+}
+
+.med-page-subtitle {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-secondary, #64748b);
+  margin: 0.25rem 0 0;
+}
+
+/* ---------- Stats ---------- */
+.med-stats {
+  display: flex;
+  gap: 1.25rem;
+}
+
+.med-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: var(--gradient-primary, linear-gradient(135deg, #1e3a8a 0%, #17a2b8 100%));
+  color: #fff;
+  border-radius: var(--border-radius-lg, 16px);
+  padding: 0.75rem 1.25rem;
+  min-width: 100px;
+}
+
+.med-stat-number {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.med-stat-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  opacity: 0.9;
+  margin-top: 0.2rem;
+}
+
+/* ---------- Filters ---------- */
+.med-filters {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.med-filter-btn {
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  background: #fff;
+  color: var(--color-text-secondary, #64748b);
+  font-size: var(--font-size-sm, 0.875rem);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.med-filter-btn:hover {
+  border-color: var(--color-teal, #17a2b8);
+  color: var(--color-teal, #17a2b8);
+}
+
+.med-filter-btn.active {
+  background: var(--color-teal, #17a2b8);
+  color: #fff;
+  border-color: var(--color-teal, #17a2b8);
+}
+
+/* ---------- Medication Card ---------- */
+.med-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.med-card {
+  background: #fff;
+  border-radius: var(--border-radius-lg, 16px);
+  border: 1px solid var(--color-border, #e2e8f0);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+
+.med-card:hover {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.med-card.inactive {
+  opacity: 0.7;
+}
+
+.med-card-main {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.med-card-icon {
+  flex-shrink: 0;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(23, 162, 184, 0.1);
+  color: var(--color-teal, #17a2b8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.med-card-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.med-card-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--color-text-primary, #1e293b);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.med-card-meta {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-secondary, #64748b);
+  margin-top: 0.15rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.med-card-sep {
+  color: var(--color-border, #e2e8f0);
+}
+
+.med-card-doctor {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--color-text-secondary, #64748b);
+  margin-top: 0.2rem;
+}
+
+.med-card-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.med-status-badge {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.med-status-badge.active {
+  background: rgba(16, 185, 129, 0.1);
+  color: #059669;
+}
+
+.med-status-badge.inactive {
+  background: rgba(100, 116, 139, 0.1);
+  color: #64748b;
+}
+
+.med-reminder-count {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--color-teal, #17a2b8);
+  font-weight: 600;
+}
+
+.med-card-chevron {
+  color: var(--color-text-secondary, #64748b);
+  transition: transform 0.25s;
+}
+
+.med-card-chevron.open {
+  transform: rotate(180deg);
+}
+
+/* ---------- Expanded Section ---------- */
+.med-card-expanded {
+  border-top: 1px solid var(--color-border, #e2e8f0);
+  padding: 1rem 1.25rem 1.25rem;
+  background: var(--color-bg-secondary, #f8fafc);
+}
+
+.med-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.med-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.med-detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+.med-detail-label {
+  font-size: var(--font-size-xs, 0.75rem);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-text-secondary, #64748b);
+  font-weight: 600;
+}
+
+.med-detail-value {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-primary, #1e293b);
+}
+/* ---------- Auto Reminder Note ---------- */
+.med-auto-reminder-note {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.85rem;
+  padding: 0.65rem 0.85rem;
+  background: rgba(23, 162, 184, 0.06);
+  border: 1px solid rgba(23, 162, 184, 0.15);
+  border-radius: 10px;
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-teal, #17a2b8);
+  font-weight: 500;
+}
+
+.med-auto-reminder-note svg {
+  flex-shrink: 0;
+}
+/* ---------- Reminders Section ---------- */
+.med-reminders-section {
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid var(--color-border, #e2e8f0);
+  padding: 1rem;
+}
+
+.med-reminders-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.med-reminders-header h3 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--color-text-primary, #1e293b);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.med-reminders-header h3 svg {
+  color: var(--color-teal, #17a2b8);
+}
+
+.med-add-reminder-btn {
+  padding: 0.3rem 0.8rem;
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--color-teal, #17a2b8);
+  background: rgba(23, 162, 184, 0.08);
+  border: 1px solid rgba(23, 162, 184, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.med-add-reminder-btn:hover {
+  background: rgba(23, 162, 184, 0.15);
+}
+
+/* ---------- Add Reminder Form ---------- */
+.med-add-reminder-form {
+  background: var(--color-bg-secondary, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 10px;
+  padding: 0.85rem;
+  margin-bottom: 0.75rem;
+}
+
+.med-add-reminder-inputs {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 0.65rem;
+  flex-wrap: wrap;
+}
+
+.med-add-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 140px;
+}
+
+.med-add-field label {
+  font-size: var(--font-size-xs, 0.75rem);
+  font-weight: 600;
+  color: var(--color-text-secondary, #64748b);
+}
+
+.med-add-field label .optional {
+  font-weight: 400;
+  opacity: 0.7;
+}
+
+.med-add-field input {
+  padding: 0.45rem 0.65rem;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 8px;
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-primary, #1e293b);
+  background: #fff;
+  transition: border-color 0.2s;
+}
+
+.med-add-field input:focus {
+  outline: none;
+  border-color: var(--color-teal, #17a2b8);
+  box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.1);
+}
+
+.med-save-reminder-btn {
+  padding: 0.45rem 1.25rem;
+  background: var(--color-teal, #17a2b8);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: var(--font-size-sm, 0.875rem);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.med-save-reminder-btn:hover {
+  background: #138496;
+}
+
+/* ---------- Reminder List ---------- */
+.med-no-reminders {
+  font-size: var(--font-size-sm, 0.875rem);
+  color: var(--color-text-secondary, #64748b);
+  text-align: center;
+  padding: 0.5rem 0;
+  margin: 0;
+}
+
+.med-reminder-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.med-reminder-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.55rem 0.75rem;
+  border-radius: 8px;
+  background: var(--color-bg-secondary, #f8fafc);
+  border: 1px solid var(--color-border, #e2e8f0);
+  transition: opacity 0.2s;
+}
+
+.med-reminder-item.disabled {
+  opacity: 0.5;
+}
+
+.med-reminder-time-block {
+  display: flex;
+  flex-direction: column;
+}
+
+.med-reminder-time {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-text-primary, #1e293b);
+}
+
+.med-reminder-label {
+  font-size: var(--font-size-xs, 0.75rem);
+  color: var(--color-text-secondary, #64748b);
+}
+
+.med-reminder-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .med-page-header {
+    flex-direction: column;
+  }
+
+  .med-stats {
+    width: 100%;
+  }
+
+  .med-stat {
+    flex: 1;
+  }
+
+  .med-card-main {
+    padding: 0.85rem 1rem;
+  }
+
+  .med-detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .med-add-reminder-inputs {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,346 @@
+/* ============================================
+   CUROVA Global Styles
+   ============================================ */
+
+@import './variables.css';
+
+/* ---- Reset & Base ---- */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-dark-text);
+  background-color: var(--color-page-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-base);
+}
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: var(--transition-base);
+}
+
+input,
+select,
+textarea {
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* ---- Scrollbar Hiding ---- */
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* ---- Utility Classes ---- */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 var(--space-3xl);
+}
+
+.page-content {
+  padding: var(--space-2xl) var(--space-3xl);
+}
+
+/* ---- Cards ---- */
+.card {
+  background: var(--color-white);
+  padding: 1.8rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-hover);
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-md);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-base);
+  transition: var(--transition-base);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--color-teal);
+  color: var(--color-white);
+}
+.btn-primary:hover {
+  background: var(--color-teal-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(23, 162, 184, 0.3);
+}
+
+.btn-secondary {
+  background: var(--color-white);
+  color: var(--color-deep-blue);
+  border: 2px solid var(--color-deep-blue);
+}
+.btn-secondary:hover {
+  background: var(--color-deep-blue);
+  color: var(--color-white);
+  transform: translateY(-2px);
+}
+
+.btn-indigo {
+  background: var(--color-indigo);
+  color: var(--color-white);
+  border-radius: var(--radius-button);
+}
+.btn-indigo:hover {
+  background: var(--color-indigo-hover);
+  transform: translateY(-2px);
+}
+
+.btn-danger {
+  background: var(--color-error);
+  color: var(--color-white);
+}
+.btn-danger:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+.btn-cancel {
+  background: var(--color-card-bg);
+  color: #374151;
+}
+.btn-cancel:hover {
+  background: var(--color-divider);
+}
+
+.btn-pill {
+  border-radius: var(--radius-button);
+  padding: 0.75rem 1.5rem;
+}
+
+.btn-deep-blue {
+  background: var(--color-deep-blue);
+  color: var(--color-white);
+  border-radius: var(--radius-button);
+}
+.btn-deep-blue:hover {
+  background: #162d6e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+}
+
+/* ---- Form Elements ---- */
+.form-group {
+  margin-bottom: var(--space-lg);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-semibold);
+  color: #374151;
+  margin-bottom: var(--space-sm);
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  color: var(--color-dark-text);
+  background: var(--color-white);
+  transition: var(--transition-base);
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: var(--color-teal);
+  box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.1);
+}
+
+.form-textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-lg);
+}
+
+/* ---- Status Badges ---- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.badge-scheduled {
+  background: var(--color-scheduled-bg);
+  color: var(--color-scheduled-text);
+}
+
+.badge-confirmed {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+.badge-in-progress {
+  background: var(--color-warning-bg);
+  color: var(--color-warning-text);
+}
+
+.badge-completed {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+.badge-cancelled {
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+}
+
+.badge-pill {
+  border-radius: var(--radius-pill);
+}
+
+/* ---- Tags ---- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+}
+
+.tag-allergy {
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+}
+
+.tag-diagnosis {
+  background: var(--color-sky-active-bg);
+  color: var(--color-sky-active-text);
+}
+
+/* ---- Stat Cards ---- */
+.stat-card {
+  background: var(--color-white);
+  padding: 1.8rem;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.stat-value {
+  font-size: 2rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-near-black);
+}
+
+.stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--color-gray-text);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ---- Loading & Empty States ---- */
+.loading-spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--space-4xl);
+}
+
+.loading-spinner::after {
+  content: '';
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-divider);
+  border-top-color: var(--color-teal);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--space-4xl) var(--space-xl);
+  color: var(--color-gray-text);
+}
+
+.empty-state h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-sm);
+  color: var(--color-near-black);
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 var(--space-base);
+  }
+
+  .page-content {
+    padding: var(--space-lg) var(--space-base);
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}

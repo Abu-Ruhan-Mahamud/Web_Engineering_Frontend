@@ -1,0 +1,945 @@
+/* ============================================
+   Dashboard Layout — Header + Main content
+   Shared by patient, doctor, admin pages
+   ============================================ */
+
+/* Global overflow prevention */
+.dashboard-layout {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+/* Header */
+.dash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 3rem;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dash-header-left {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dash-logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.dash-nav {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.dash-nav a {
+  color: #9ca3af;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  padding-bottom: 1.5rem;
+  margin-bottom: -1rem;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s;
+  white-space: nowrap;
+}
+
+.dash-nav a:hover {
+  color: #1e3a8a;
+}
+
+.dash-nav a.active {
+  color: #1e3a8a;
+  border-bottom-color: #1e3a8a;
+}
+
+.dash-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.dash-notification-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #f1f5f9;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: background 0.3s;
+}
+
+.dash-notification-btn:hover {
+  background: #e2e8f0;
+}
+
+.dash-notification-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: #64748b;
+}
+
+.dash-notification-badge {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 18px;
+  height: 18px;
+  background: #ef4444;
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid white;
+}
+
+.dash-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #e5e7eb;
+  transition: border-color 0.3s;
+}
+
+.dash-avatar:hover {
+  border-color: #17a2b8;
+}
+
+.dash-avatar-placeholder {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #74C3D0, #17a2b8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid #e5e7eb;
+  transition: border-color 0.3s;
+}
+
+.dash-avatar-placeholder:hover {
+  border-color: #17a2b8;
+}
+
+/* User menu dropdown */
+.dash-user-menu {
+  position: relative;
+}
+
+.dash-user-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  min-width: 200px;
+  padding: 0.5rem;
+  z-index: 200;
+  animation: dropdownFade 0.2s ease;
+}
+
+@keyframes dropdownFade {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dash-user-dropdown-info {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.dash-user-dropdown-name {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 0.9rem;
+}
+
+.dash-user-dropdown-email {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+.dash-user-dropdown a,
+.dash-user-dropdown button {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  width: 100%;
+  padding: 0.7rem 1rem;
+  border: none;
+  background: none;
+  color: #374151;
+  font-size: 0.9rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.dash-user-dropdown a:hover,
+.dash-user-dropdown button:hover {
+  background: #f3f4f6;
+}
+
+.dash-user-dropdown .logout-btn {
+  color: #ef4444;
+}
+
+.dash-user-dropdown .logout-btn:hover {
+  background: #fef2f2;
+}
+
+.dash-user-dropdown svg {
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+/* Main Content Area */
+.dash-main {
+  padding: 2.5rem 3rem;
+  background: #f5f5f7;
+  min-height: calc(100vh - 70px);
+  overflow-y: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dash-main-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Welcome section */
+.dash-welcome h1 {
+  font-size: 2.5rem;
+  font-weight: 400;
+  color: #1a1a1a;
+  margin-bottom: 0.3rem;
+}
+
+.dash-welcome h1 strong {
+  font-weight: 700;
+}
+
+.dash-welcome p {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* Stats grid */
+.dash-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.dash-stat-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  border-radius: 16px;
+}
+
+.dash-stat-card-link:hover .dash-stat-card {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dash-stat-card-link:hover .dash-stat-icon {
+  background: #17a2b8;
+}
+
+.dash-stat-card-link:hover .dash-stat-icon svg {
+  fill: white;
+}
+
+.dash-stat-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.dash-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.dash-stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  background: #e0f2fe;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dash-stat-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: #17a2b8;
+}
+
+.dash-stat-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.dash-stat-label {
+  color: #6b7280;
+  font-size: 0.85rem;
+  margin-top: 0.2rem;
+}
+
+/* Dashboard content grid (2fr 1fr) */
+.dash-content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+}
+
+/* Common card */
+.dash-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.8rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.dash-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dash-card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1a1a1a;
+}
+
+.dash-card-link {
+  color: #17a2b8;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+
+.dash-card-link:hover {
+  color: #138496;
+}
+
+/* Appointment items */
+.dash-appointment-item {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 1rem;
+  background: #f9fafb;
+  border-radius: 12px;
+  margin-bottom: 0.8rem;
+  transition: transform 0.3s;
+  cursor: pointer;
+  min-width: 0;
+}
+
+.dash-appointment-item:hover {
+  transform: translateX(4px);
+}
+
+.dash-appointment-date {
+  background: white;
+  border-radius: 10px;
+  padding: 0.8rem;
+  text-align: center;
+  min-width: 70px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  flex-shrink: 0;
+}
+
+.dash-appointment-day {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #1e3a8a;
+  line-height: 1;
+}
+
+.dash-appointment-month {
+  font-size: 0.75rem;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.dash-appointment-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.dash-appointment-doctor {
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dash-appointment-specialty {
+  font-size: 0.85rem;
+  color: #6b7280;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dash-appointment-time {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 0.15rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Status badges */
+.dash-status {
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.dash-status-upcoming,
+.dash-status-scheduled {
+  background: #dbeafe;
+  color: #1e40af;
+}
+
+.dash-status-confirmed {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.dash-status-completed {
+  background: #e0f2fe;
+  color: #0369a1;
+}
+
+.dash-status-cancelled {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.dash-status-in_progress,
+.dash-status-in-progress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.dash-status-no-show {
+  background: #fce7f3;
+  color: #9d174d;
+}
+
+.dash-status-rescheduled {
+  background: #ede9fe;
+  color: #5b21b6;
+}
+
+/* Quick Actions Grid */
+.dash-quick-actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.dash-quick-action {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 1.2rem;
+  background: #f1f5f9;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Poppins', sans-serif;
+  transition: all 0.3s;
+  text-decoration: none;
+  color: #374151;
+}
+
+.dash-quick-action:hover {
+  background: #e0f2fe;
+  transform: translateY(-2px);
+}
+
+.dash-quick-action-icon {
+  width: 50px;
+  height: 50px;
+  background: #17a2b8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dash-quick-action-icon svg {
+  width: 24px;
+  height: 24px;
+  fill: white;
+}
+
+.dash-quick-action span {
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Today's medications */
+.dash-med-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem;
+  background: #f9fafb;
+  border-radius: 10px;
+  margin-bottom: 0.6rem;
+}
+
+.dash-med-time {
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.3rem 0.6rem;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  min-width: 70px;
+  text-align: center;
+}
+
+.dash-med-name {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 0.9rem;
+}
+
+.dash-med-dose {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+/* Empty state */
+.dash-empty {
+  text-align: center;
+  padding: 2rem;
+  color: #9ca3af;
+}
+
+.dash-empty svg {
+  width: 48px;
+  height: 48px;
+  fill: #d1d5db;
+  margin-bottom: 0.8rem;
+}
+
+.dash-empty p {
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   Hamburger & Mobile Navigation
+   ============================================ */
+
+/* Hamburger button — hidden by default (desktop) */
+.dash-hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 8px;
+  flex-shrink: 0;
+  transition: background 0.2s;
+}
+
+.dash-hamburger:hover {
+  background: #f1f5f9;
+}
+
+.dash-hamburger-line {
+  display: block;
+  width: 100%;
+  height: 2.5px;
+  background: #374151;
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Animated X when open */
+.dash-hamburger-line.open:nth-child(1) {
+  transform: translateY(7.5px) rotate(45deg);
+}
+.dash-hamburger-line.open:nth-child(2) {
+  opacity: 0;
+}
+.dash-hamburger-line.open:nth-child(3) {
+  transform: translateY(-7.5px) rotate(-45deg);
+}
+
+/* Mobile nav panel — slides in from top */
+.dash-mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 70px;
+  left: 0;
+  right: 0;
+  z-index: 99;
+  padding: 0.5rem 0;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.dash-mobile-nav.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.dash-mobile-nav a {
+  display: block;
+  padding: 0.9rem 2rem;
+  color: #6b7280;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  transition: all 0.2s;
+}
+
+.dash-mobile-nav a:hover {
+  background: #f9fafb;
+  color: #1e3a8a;
+}
+
+.dash-mobile-nav a.active {
+  color: #1e3a8a;
+  background: #eff6ff;
+  border-left-color: #1e3a8a;
+  font-weight: 600;
+}
+
+/* Overlay behind mobile nav */
+.dash-mobile-nav-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.2);
+  z-index: 98;
+}
+
+/* ============================================
+   Responsive Breakpoints
+   ============================================ */
+
+/* Large screens — reduce content grid */
+@media (max-width: 1200px) {
+  .dash-content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dash-header {
+    padding: 1rem 2rem;
+  }
+
+  .dash-header-left {
+    gap: 2rem;
+  }
+
+  .dash-nav {
+    gap: 1.5rem;
+  }
+
+  .dash-main {
+    padding: 2rem 2rem;
+  }
+}
+
+/* Medium screens — switch to hamburger menu */
+@media (max-width: 900px) {
+  .dash-hamburger {
+    display: flex;
+  }
+
+  .dash-nav {
+    display: none;
+  }
+
+  .dash-mobile-nav {
+    display: flex;
+  }
+
+  .dash-mobile-nav-overlay {
+    display: block;
+  }
+
+  .dash-header {
+    padding: 0.8rem 1.5rem;
+  }
+
+  .dash-header-left {
+    gap: 1rem;
+  }
+
+  .dash-logo {
+    font-size: 1.5rem;
+  }
+
+  .dash-main {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .dash-welcome h1 {
+    font-size: 2rem;
+  }
+
+  .dash-quick-actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dash-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+  }
+
+  .dash-stat-card {
+    padding: 1.2rem;
+  }
+
+  .dash-stat-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .dash-stat-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .dash-stat-value {
+    font-size: 1.8rem;
+  }
+
+  .dash-stat-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Extra small screens — further optimization */
+@media (max-width: 640px) {
+  .dash-header {
+    padding: 0.75rem 1.2rem;
+  }
+
+  .dash-logo {
+    font-size: 1.4rem;
+  }
+
+  .dash-header-left {
+    gap: 1.5rem;
+  }
+
+  .dash-main {
+    padding: 1.2rem 1rem;
+  }
+
+  .dash-welcome {
+    margin-bottom: 1.5rem;
+  }
+
+  .dash-welcome h1 {
+    font-size: 1.7rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .dash-welcome p {
+    font-size: 0.85rem;
+  }
+}
+
+/* Small screens — single column everything */
+@media (max-width: 600px) {
+  .dash-header {
+    padding: 0.7rem 1rem;
+  }
+
+  .dash-logo {
+    font-size: 1.3rem;
+  }
+
+  .dash-main {
+    padding: 1rem 0.8rem;
+  }
+
+  .dash-welcome h1 {
+    font-size: 1.5rem;
+  }
+
+  .dash-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .dash-stat-card {
+    padding: 1rem;
+  }
+
+  .dash-stat-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .dash-stat-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .dash-stat-value {
+    font-size: 1.6rem;
+  }
+
+  .dash-stat-label {
+    font-size: 0.75rem;
+  }
+
+  .dash-quick-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .dash-card {
+    padding: 1.2rem;
+  }
+
+  .dash-avatar,
+  .dash-avatar-placeholder {
+    width: 38px;
+    height: 38px;
+    font-size: 0.85rem;
+  }
+
+  .dash-notification-btn {
+    width: 34px;
+    height: 34px;
+  }
+
+  .dash-appointment-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 0.8rem;
+  }
+
+  .dash-appointment-date {
+    min-width: auto;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .dash-appointment-day {
+    font-size: 1.5rem;
+  }
+
+  .dash-appointment-month {
+    font-size: 0.65rem;
+  }
+
+  .dash-appointment-info {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .dash-appointment-doctor {
+    font-size: 0.9rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dash-appointment-specialty {
+    font-size: 0.75rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .dash-appointment-time {
+    font-size: 0.7rem;
+  }
+
+  .dash-status {
+    padding: 0.2rem 0.6rem;
+    font-size: 0.65rem;
+  }
+}

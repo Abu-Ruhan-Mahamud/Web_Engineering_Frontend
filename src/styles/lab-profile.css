@@ -1,0 +1,307 @@
+/* ============================================
+   Lab Technician Profile — extra styles
+   ============================================ */
+
+/* Header gradient override for lab tech */
+.lab-profile-header {
+  background: linear-gradient(135deg, #065f46 0%, #10b981 100%);
+}
+
+/* Role badge */
+.lab-role-badge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 0.3rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  backdrop-filter: blur(4px);
+}
+
+/* Error message */
+.lab-profile-error {
+  background: #fee2e2;
+  color: #991b1b;
+  padding: 0.8rem 1.2rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* ── Work Overview: Stats Grid ── */
+.lab-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.lab-stat-card {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.lab-stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.lab-stat-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 0.75rem;
+}
+
+.lab-stat-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.lab-stat-pending .lab-stat-icon {
+  background: #fef3c7;
+  color: #d97706;
+}
+.lab-stat-pending .lab-stat-icon svg { fill: #d97706; }
+.lab-stat-pending { border-left: 3px solid #f59e0b; }
+
+.lab-stat-processing .lab-stat-icon {
+  background: #dbeafe;
+  color: #2563eb;
+}
+.lab-stat-processing .lab-stat-icon svg { fill: #2563eb; }
+.lab-stat-processing { border-left: 3px solid #3b82f6; }
+
+.lab-stat-completed .lab-stat-icon {
+  background: #d1fae5;
+  color: #059669;
+}
+.lab-stat-completed .lab-stat-icon svg { fill: #059669; }
+.lab-stat-completed { border-left: 3px solid #10b981; }
+
+.lab-stat-total .lab-stat-icon {
+  background: #ede9fe;
+  color: #7c3aed;
+}
+.lab-stat-total .lab-stat-icon svg { fill: #7c3aed; }
+.lab-stat-total { border-left: 3px solid #8b5cf6; }
+
+.lab-stat-number {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.lab-stat-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* ── Recent Queue List ── */
+.lab-empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: #9ca3af;
+}
+
+.lab-empty-state p {
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+}
+
+.lab-recent-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.lab-recent-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.25rem;
+  background: #f9fafb;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+  transition: background 0.2s;
+}
+
+.lab-recent-item:hover {
+  background: #f3f4f6;
+}
+
+.lab-recent-test {
+  font-weight: 600;
+  color: #1a1a1a;
+  font-size: 0.95rem;
+  margin-bottom: 0.2rem;
+}
+
+.lab-recent-patient {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+.lab-recent-badges {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Priority badges */
+.lab-priority-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.lab-priority-routine {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.lab-priority-urgent {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.lab-priority-stat {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* Status badges */
+.lab-status-badge {
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.lab-status-ordered {
+  background: #dbeafe;
+  color: #1d4ed8;
+}
+
+.lab-status-sample_collected {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.lab-status-processing {
+  background: #ede9fe;
+  color: #6d28d9;
+}
+
+.lab-status-results_available {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.lab-status-reviewed {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+/* ── Security Tab: Password Requirements ── */
+.lab-password-requirements {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.lab-req-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  margin: 0 0 0.5rem 0;
+}
+
+.lab-password-requirements ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.lab-password-requirements li {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  padding-left: 1.5rem;
+  position: relative;
+  transition: color 0.2s;
+}
+
+.lab-password-requirements li::before {
+  content: '○';
+  position: absolute;
+  left: 0;
+  color: #d1d5db;
+  transition: color 0.2s;
+}
+
+.lab-password-requirements li.met {
+  color: #059669;
+}
+
+.lab-password-requirements li.met::before {
+  content: '●';
+  color: #10b981;
+}
+
+/* Secondary button */
+.lab-btn-secondary {
+  background: #f3f4f6;
+  color: #374151;
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.lab-btn-secondary:hover {
+  background: #e5e7eb;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .lab-stats-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lab-recent-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .lab-recent-badges {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .lab-stats-grid {
+    grid-template-columns: 1fr;
+  }
+}

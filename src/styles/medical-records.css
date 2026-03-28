@@ -1,0 +1,242 @@
+/* ============================================
+   Medical Records Page
+   ============================================ */
+
+.records-page-header {
+  margin-bottom: 2rem;
+}
+
+.records-page-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 0.3rem;
+}
+
+.records-page-subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+}
+
+/* Filters bar */
+.records-filters {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.records-search {
+  flex: 1;
+  min-width: 250px;
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+}
+
+.records-search:focus {
+  outline: none;
+  border-color: #17a2b8;
+  box-shadow: 0 0 0 3px rgba(23, 162, 184, 0.1);
+}
+
+.records-filter-select {
+  padding: 0.75rem 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.9rem;
+  background: white;
+  cursor: pointer;
+}
+
+/* Record card */
+.records-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.record-card {
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.record-header {
+  background: linear-gradient(135deg, #74C3D0, #17a2b8);
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+}
+
+.record-header-info {
+  flex: 1;
+}
+
+.record-date {
+  font-size: 0.85rem;
+  opacity: 0.9;
+  margin-bottom: 0.3rem;
+}
+
+.record-doctor {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.record-specialty {
+  font-size: 0.85rem;
+  opacity: 0.85;
+}
+
+.record-expand-btn {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.record-expand-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Record body (collapsible) */
+.record-body {
+  padding: 1.5rem;
+  display: none;
+}
+
+.record-body.open {
+  display: block;
+}
+
+.record-section {
+  margin-bottom: 1.2rem;
+}
+
+.record-section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.record-section-content {
+  font-size: 0.95rem;
+  color: #1a1a1a;
+  line-height: 1.6;
+}
+
+/* Diagnosis badges */
+.record-diagnosis-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.record-diagnosis-badge {
+  background: #fef3c7;
+  color: #92400e;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Symptom badges */
+.record-symptom-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.record-symptom-badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* Vitals grid */
+.record-vitals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.8rem;
+}
+
+.record-vital-item {
+  background: #f9fafb;
+  padding: 0.8rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.record-vital-label {
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin-bottom: 0.3rem;
+}
+
+.record-vital-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+
+/* Prescriptions grid */
+.record-prescriptions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.8rem;
+}
+
+.record-prescription-item {
+  background: #f9fafb;
+  padding: 1rem;
+  border-radius: 10px;
+  border-left: 4px solid #17a2b8;
+}
+
+.record-rx-name {
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.2rem;
+}
+
+.record-rx-detail {
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+/* Record footer */
+.record-footer {
+  padding: 0.8rem 1.5rem;
+  border-top: 1px solid #f3f4f6;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  color: #6b7280;
+}
+
+@media (max-width: 768px) {
+  .records-filters {
+    flex-direction: column;
+  }
+}

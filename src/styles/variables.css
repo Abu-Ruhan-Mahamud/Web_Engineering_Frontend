@@ -1,0 +1,105 @@
+/* ============================================
+   CUROVA Design System — CSS Variables
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ---- Primary Colors ---- */
+  --color-deep-blue: #1e3a8a;
+  --color-teal: #17a2b8;
+  --color-teal-hover: #138496;
+  --color-light-teal: #74C3D0;
+  --color-light-blue: #60a5fa;
+  --color-indigo: #5b68f4;
+  --color-indigo-hover: #4c56e0;
+
+  /* ---- Neutral Colors ---- */
+  --color-near-black: #1a1a1a;
+  --color-dark-text: #333;
+  --color-gray-text: #475569;
+  --color-muted-gray: #64748b;
+  --color-light-gray-text: #9ca3af;
+  --color-lighter-gray: #94a3b8;
+  --color-border: #d1d5db;
+  --color-divider: #e5e7eb;
+  --color-light-bg: #f1f5f9;
+  --color-card-bg: #f3f4f6;
+  --color-row-bg: #f9fafb;
+  --color-page-bg: #f5f5f7;
+  --color-auth-bg: #E2E3EA;
+  --color-white: #ffffff;
+
+  /* ---- Semantic / Status ---- */
+  --color-success: #10b981;
+  --color-success-bg: #d1fae5;
+  --color-success-text: #065f46;
+  --color-scheduled-bg: #dbeafe;
+  --color-scheduled-text: #1e40af;
+  --color-warning-bg: #fef3c7;
+  --color-warning-text: #92400e;
+  --color-error: #ef4444;
+  --color-error-bg: #fee2e2;
+  --color-error-text: #991b1b;
+  --color-purple: #7c3aed;
+  --color-cyan: #0891b2;
+  --color-yellow: #eab308;
+  --color-sky-blue: #38bdf8;
+  --color-sky-active-bg: #e0f2fe;
+  --color-sky-active-text: #0369a1;
+
+  /* ---- Gradients ---- */
+  --gradient-teal: linear-gradient(135deg, #74C3D0, #17a2b8);
+  --gradient-purple: linear-gradient(135deg, #a78bfa, #7c3aed);
+  --gradient-orange: linear-gradient(135deg, #fb923c, #ea580c);
+  --gradient-green: linear-gradient(135deg, #10b981, #059669);
+  --gradient-pink: linear-gradient(135deg, #ec4899, #db2777);
+
+  /* ---- Typography ---- */
+  --font-family: 'Poppins', sans-serif;
+  --font-size-xs: 0.7rem;
+  --font-size-sm: 0.8rem;
+  --font-size-base: 0.95rem;
+  --font-size-md: 1.1rem;
+  --font-size-lg: 1.3rem;
+  --font-size-xl: 1.8rem;
+  --font-size-2xl: 2rem;
+  --font-size-3xl: 2.5rem;
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ---- Spacing ---- */
+  --space-xs: 0.3rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.8rem;
+  --space-base: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 2.5rem;
+  --space-3xl: 3rem;
+  --space-4xl: 4rem;
+
+  /* ---- Border Radius ---- */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-base: 10px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-pill: 20px;
+  --radius-button: 25px;
+  --radius-card-auth: 40px;
+  --radius-circle: 50%;
+
+  /* ---- Shadows ---- */
+  --shadow-subtle: 0 2px 8px rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-elevated: 0 8px 20px rgba(0, 0, 0, 0.15);
+  --shadow-heavy: 0 20px 60px rgba(0, 0, 0, 0.15);
+
+  /* ---- Transitions ---- */
+  --transition-base: all 0.3s;
+}
