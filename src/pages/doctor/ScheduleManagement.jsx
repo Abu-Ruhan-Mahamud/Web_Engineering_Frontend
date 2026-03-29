@@ -19,26 +19,41 @@ export default function ScheduleManagement() {
   const [weekOffset, setWeekOffset] = useState(0);
   const [error, setError] = useState('');
 
+  // Fetch data function (can be called multiple times)
+  const fetchData = async (controller) => {
+    try {
+      setError('');
+      const [schedRes, aptRes] = await Promise.all([
+        api.get('/auth/doctor/schedule/', { signal: controller.signal }),
+        api.get('/appointments/', { signal: controller.signal }),
+      ]);
+      setSchedule(schedRes.data);
+      setAppointments(getResults(aptRes.data));
+    } catch (err) {
+      if (controller.signal.aborted) return;
+      setError('Failed to load schedule. Please refresh the page.');
+    } finally {
+      if (!controller.signal.aborted) setLoading(false);
+    }
+  };
+
+  // Initial data fetch
   useEffect(() => {
     const controller = new AbortController();
-    const fetchData = async () => {
-      try {
-        setError('');
-        const [schedRes, aptRes] = await Promise.all([
-          api.get('/auth/doctor/schedule/', { signal: controller.signal }),
-          api.get('/appointments/', { signal: controller.signal }),
-        ]);
-        setSchedule(schedRes.data);
-        setAppointments(getResults(aptRes.data));
-      } catch (err) {
-        if (controller.signal.aborted) return;
-        setError('Failed to load schedule. Please refresh the page.');
-      } finally {
-        if (!controller.signal.aborted) setLoading(false);
-      }
-    };
-    fetchData();
+    fetchData(controller);
     return () => controller.abort();
+  }, []);
+
+  // Auto-refresh when window regains focus (e.g., returning from patient booking page)
+  useEffect(() => {
+    const handleFocus = () => {
+      const controller = new AbortController();
+      setLoading(true);
+      fetchData(controller);
+      return () => controller.abort();
+    };
+    window.addEventListener('focus', handleFocus);
+    return () => window.removeEventListener('focus', handleFocus);
   }, []);
 
   // Get the week dates

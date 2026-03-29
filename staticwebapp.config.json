@@ -1,0 +1,25 @@
+{
+  "routes": [
+    {
+      "route": "/api/*",
+      "allowedRoles": ["*"],
+      "methods": ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"]
+    },
+    {
+      "route": "/*",
+      "serve": "/index.html",
+      "statusCode": 200
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/index.html",
+    "exclude": [
+      "/api/*",
+      "*.{css,js,html,woff,woff2,ttf,otf,jpg,jpeg,png,gif,svg,ico}",
+      "*.json"
+    ]
+  },
+  "mimeTypes": {
+    ".wasm": "application/wasm"
+  }
+}

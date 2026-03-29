@@ -32,7 +32,6 @@ import DoctorSchedule from './pages/doctor/ScheduleManagement'
 import DoctorPatients from './pages/doctor/Patients'
 import DoctorPatientDetail from './pages/doctor/PatientDetail'
 import DoctorCreateRecord from './pages/doctor/CreateRecord'
-import DoctorPendingReports from './pages/doctor/PendingReports'
 import DoctorProfile from './pages/doctor/Profile'
 
 // Admin pages
@@ -112,7 +111,6 @@ function App() {
         <Route path="patients" element={<DoctorPatients />} />
         <Route path="patients/:patientId" element={<DoctorPatientDetail />} />
         <Route path="patients/:patientId/create-record" element={<DoctorCreateRecord />} />
-        <Route path="pending-reports" element={<DoctorPendingReports />} />
         <Route path="notifications" element={<Notifications />} />
         <Route path="profile" element={<DoctorProfile />} />
         <Route index element={<Navigate to="dashboard" replace />} />
