@@ -28,7 +28,9 @@ export default function ScheduleManagement() {
         api.get('/appointments/', { signal: controller.signal }),
       ]);
       setSchedule(schedRes.data);
-      setAppointments(getResults(aptRes.data));
+      const fetchedAppointments = getResults(aptRes.data);
+      setAppointments(fetchedAppointments);
+      console.log('[DEBUG] Fetched appointments:', fetchedAppointments);
     } catch (err) {
       if (controller.signal.aborted) return;
       setError('Failed to load schedule. Please refresh the page.');
@@ -91,17 +93,26 @@ export default function ScheduleManagement() {
   );
 
   const getAppointmentsForCell = (date, hourLabel) => {
-    const dateStr = date.toISOString().split('T')[0];
+    // Convert to local date string (not UTC) to match backend date format
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const dateStr = `${year}-${month}-${day}`;
+    
     const hourMap = {
       '9:00 AM': 9, '10:00 AM': 10, '11:00 AM': 11, '12:00 PM': 12,
       '1:00 PM': 13, '2:00 PM': 14, '3:00 PM': 15, '4:00 PM': 16,
     };
     const hour = hourMap[hourLabel];
-    return activeAppointments.filter((apt) => {
+    const result = activeAppointments.filter((apt) => {
       if (apt.appointment_date !== dateStr || !apt.appointment_time) return false;
       const aptHour = parseInt(apt.appointment_time.split(':')[0]);
       return aptHour === hour;
     });
+    if (result.length > 0) {
+      console.log(`[DEBUG] Found ${result.length} appointments for ${dateStr} at ${hourLabel}`, result);
+    }
+    return result;
   };
 
   const totalSlots = schedule.available_days.length * 8;
