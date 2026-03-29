@@ -1,13 +1,13 @@
 {
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "env": {
-    "VITE_API_URL": "@vite_api_url",
-    "VITE_GOOGLE_CLIENT_ID": "@vite_google_client_id"
-  },
   "rewrites": [
     {
-      "source": "/((?!.*\\.).*)",
+      "source": "/api/(.*)",
+      "destination": "https://curova-backend.onrender.com/api/$1"
+    },
+    {
+      "source": "/((?!api)(?!.*\\.).*)",
       "destination": "/index.html"
     }
   ]
