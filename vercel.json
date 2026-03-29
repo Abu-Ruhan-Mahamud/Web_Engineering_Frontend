@@ -3,11 +3,7 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "/api/(.*)",
-      "destination": "https://curova-backend.onrender.com/api/$1"
-    },
-    {
-      "source": "/((?!api)(?!.*\\.).*)",
+      "source": "/((?!.*\\.).*)",
       "destination": "/index.html"
     }
   ]
