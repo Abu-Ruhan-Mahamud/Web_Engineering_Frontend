@@ -23,16 +23,39 @@ export default function ScheduleManagement() {
   const fetchData = async (controller) => {
     try {
       setError('');
+      console.log('[DEBUG] Starting fetch...');
       const [schedRes, aptRes] = await Promise.all([
         api.get('/auth/doctor/schedule/', { signal: controller.signal }),
         api.get('/appointments/', { signal: controller.signal }),
       ]);
+      console.log('[DEBUG] Schedule response:', schedRes.data);
+      console.log('[DEBUG] Raw appointments response:', aptRes.data);
+      
       setSchedule(schedRes.data);
       const fetchedAppointments = getResults(aptRes.data);
+      console.log('[DEBUG] Parsed appointments from getResults:', fetchedAppointments);
+      console.log('[DEBUG] Total appointments count:', fetchedAppointments.length);
+      
+      if (fetchedAppointments.length > 0) {
+        fetchedAppointments.forEach((apt, idx) => {
+          console.log(`[DEBUG] Appointment ${idx}:`, {
+            id: apt.id,
+            date: apt.appointment_date,
+            time: apt.appointment_time,
+            status: apt.status,
+            doctor: apt.doctor,
+            doctor_name: apt.doctor_name,
+          });
+        });
+      } else {
+        console.warn('[DEBUG] WARNING: No appointments returned from API!');
+      }
+      
       setAppointments(fetchedAppointments);
-      console.log('[DEBUG] Fetched appointments:', fetchedAppointments);
     } catch (err) {
       if (controller.signal.aborted) return;
+      console.error('[DEBUG] Fetch error:', err);
+      console.error('[DEBUG] Error response:', err.response?.data);
       setError('Failed to load schedule. Please refresh the page.');
     } finally {
       if (!controller.signal.aborted) setLoading(false);
