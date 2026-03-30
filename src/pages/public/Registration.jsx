@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { GoogleLogin } from '@react-oauth/google';
+// import { GoogleLogin } from '@react-oauth/google';
 import { useAuth } from '../../contexts/AuthContext';
 import CurovaLogo from '../../components/common/CurovaLogo';
 import '../../styles/auth.css';
@@ -18,7 +18,7 @@ export default function Registration() {
   const [showConfirm, setShowConfirm] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { register, googleLogin } = useAuth();
+  const { register } = useAuth(); // , googleLogin
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -218,7 +218,7 @@ export default function Registration() {
               </button>
             </form>
 
-            <div className="auth-divider">
+            {/* <div className="auth-divider">
               <span>or</span>
             </div>
 
@@ -243,7 +243,7 @@ export default function Registration() {
                 width="400"
                 logo_alignment="center"
               />
-            </div>
+            </div> */}
 
             <div className="auth-bottom-text">
               Already have an account? <Link to="/login">Sign in→</Link>

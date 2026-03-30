@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { GoogleLogin } from '@react-oauth/google';
+// import { GoogleLogin } from '@react-oauth/google';
 import { useAuth } from '../../contexts/AuthContext';
 import CurovaLogo from '../../components/common/CurovaLogo';
 import '../../styles/auth.css';
@@ -11,7 +11,7 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login, googleLogin } = useAuth();
+  const { login } = useAuth(); // , googleLogin
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -116,7 +116,7 @@ export default function Login() {
               </button>
             </form>
 
-            <div className="auth-divider">
+            {/* <div className="auth-divider">
               <span>or</span>
             </div>
 
@@ -146,7 +146,7 @@ export default function Login() {
                 width="400"
                 logo_alignment="center"
               />
-            </div>
+            </div> */}
 
             <div className="auth-bottom-text">
               Don't have an account? <Link to="/register">Sign Up</Link>
